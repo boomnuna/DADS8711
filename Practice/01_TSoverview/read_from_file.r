@@ -1,5 +1,8 @@
 library(tsibble)
 library(fable)
+library(readr)   
+library(dplyr)
+library(lubridate)
 
 # load csv file
 file_name <- file.choose()
@@ -34,12 +37,6 @@ accuracy(fit) %>%
 fc <- fit %>%
     forecast(test)
 View(fc)
-
-# see the result
-result <- fc %>%
-    as_tibble() %>%
-    select(StoreID, SKU, Quater, .model, .mean)
-View(result)
 
 # test accuracy
 accuracy(fc, test) %>% 
