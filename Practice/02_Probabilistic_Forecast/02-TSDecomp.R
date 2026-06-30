@@ -33,7 +33,7 @@ fit_y %>%
 
 fc <- fit_y %>% 
   forecast(h=12, point_forecast = lst(median, mean)) 
-write.csv(fc, "temp.csv")
+#write.csv(fc, "temp.csv")
 
 #########################
 # Moving average

@@ -1,5 +1,5 @@
 # change to your working directory
-setwd("G:/My Drive/Mai/Teaching/courses/Forecasting/Fc-Excel-R-Python/")
+#setwd("G:/My Drive/Mai/Teaching/courses/Forecasting/Fc-Excel-R-Python/")
 
 library(fpp3)  
 library(tidyverse)
