@@ -73,13 +73,12 @@ TSLM(GDP_per_capita ~ trend())
 
 # estimate
 fit <- gdppc |>
-  model(trend_model = TSLM(GDP_per_capita ~ trend()))
+  model(trend_model = TSLM(GDP_per_capita ~ trend())) 
 
 fit
 
 fit %>% 
-  filter(Country == "Sweden") %>% 
-  report()
+  filter(Country == "Sweden")
   
 # evaluate
 fit %>% 
@@ -157,6 +156,7 @@ y %>%
 # Forecasting using transformation
 #####################################################
 # small example
+l
 df <- read_csv("smallExample.csv")
 head(df)
 myts <- df %>% 

@@ -44,13 +44,12 @@ global_economy %>%
   autoplot(Exports) +
   labs(y = "% of GDP", title = "Total Australian exports")
 
-
 aus_exports <- global_economy %>%
   filter(Country == "Australia") %>%
   mutate(
     `5-MA` = slider::slide_dbl(Exports, mean,
                                .before = 2, .after = 2, .complete = TRUE)
-  )
+)
 
 aus_exports %>%
   autoplot(Exports) +
@@ -77,7 +76,7 @@ dcmp <- y %>%
   ) %>% 
   components() 
 
-dcmp %>% 
+cmp %>% d
   filter(.model == "mA")
 
 dcmp %>% 
@@ -167,7 +166,7 @@ fit_y <- y %>%
                                         NAIVE(season_adjust))
   ) 
 
-fit_y %>% 
+result <- fit_y %>% 
   forecast(h=4) 
 
 y %>% 
@@ -191,7 +190,6 @@ fit_y <- y %>%
 fit_y %>% 
   forecast(h=12) %>% 
   autoplot(y, level = NULL)
-
 
 
 us_retail_employment %>%
@@ -225,8 +223,8 @@ y <- tsibble(
   Sales = c(15, 10, 12, 16, 9, 12, 10),
   index = Wk
 )
-
-y %>% ACF(Sales, lag_max = 4)
+y %>% ACF(Sales, lag_max = 4) %>% 
+autoplot()
 
 recent_production %>%
   ACF(Beer, lag_max = 4)

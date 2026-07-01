@@ -1,12 +1,12 @@
-# change to your working directory
-setwd("G:/My Drive/Mai/Teaching/courses/Forecasting/Fc-Excel-R-Python/")
+# # change to your working directory
+# setwd("G:/My Drive/Mai/Teaching/courses/Forecasting/Fc-Excel-R-Python/")
 
 library(fpp3)
 library(tidyverse)
 
 #######################################################
 # Example: Corticosteroid drug sales in Australia
-#####################################################
+############################nm #########################
 help(PBS)
 
 h02 <- PBS %>%
@@ -26,7 +26,8 @@ h02 %>%
 h02 <- PBS %>%
   filter(ATC2 == "H02") %>%
   summarise(Cost = sum(Cost)/1e6)
-fit <- h02 %>% model(auto = ARIMA(log(Cost)))
+fit <- h02 %>% 
+  model(auto = ARIMA(log(Cost)))
 report(fit)
 fit %>% gg_tsresiduals(lag_max=36)
 

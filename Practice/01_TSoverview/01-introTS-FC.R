@@ -52,18 +52,17 @@ fit <- train %>%
     SeasonNaive = SNAIVE(Demand),
     Drift = NAIVE(Demand ~ drift())
 )
-
 accuracy(fit)  # Residual on train
 
 # Forecast on test set
 fc <- fit %>% 
   forecast(h=4)
-
 # Point Forecats
 accuracy(fc, df1)  # Error on test
+# quantile score 
+accuracy(fc, df1, list(qs=quantile_score), probs=0.97) 
 # CRPS 
-accuracy(fc, df1, measures = list(crps = CRPS)) %>% 
-arrange(crps)
+accuracy(fc, df1, measures = list(crps = CRPS)) 
 
 #########################
 # Cross validation
