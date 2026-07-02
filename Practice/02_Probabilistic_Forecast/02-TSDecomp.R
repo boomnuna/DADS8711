@@ -70,11 +70,27 @@ y <- tsibble(
 
 autoplot(y)
 
+fit <- y %>%
+  model(
+    ClassicalNaive =
+      decomposition_model(
+        classical_decomposition(Obs, type = "additive"),
+        NAIVE(season_adjust)
+      )
+  )
+
+fc <- fit %>%
+  forecast(h = 12)
+
+
+  
 dcmp <- y %>%
   model(mM = classical_decomposition(Obs, type = "multiplicative"),
         mA = classical_decomposition(Obs, type = "additive")
   ) %>% 
   components() 
+
+
 
 cmp %>% d
   filter(.model == "mA")
